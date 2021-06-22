@@ -1,0 +1,101 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>async await</h1>
+
+
+
+
+
+<script>
+
+
+// one way
+
+async function test(){
+
+	return "hello";
+
+}
+
+test().then((result)=>{
+		
+		console.log(`${result}`);
+
+});
+
+// 2nd way
+
+let test1 = async function(){
+
+	return "hello1";
+}
+test1().then((result1)=>{
+		
+		console.log(`${result1}`);
+
+});
+
+
+// await ex 
+
+let test2 = async function(){
+
+	console.log(`message 2`);
+	console.log(`message 3`);
+	await console.log(`message 4`);
+	console.log(`message 5`);
+}
+
+console.log(`message 1`);
+test2();
+		
+console.log(`message 6`);
+
+
+// async await api
+
+async function myapi(){
+
+	try{
+
+	//const datas = await fetch('https://jsonplaceholder.typicode.com/users');
+	const datas = await fetch('https://api.covid19api.com/summary');
+	
+	const mydatas = await datas.json();
+	
+	console.log(mydatas);
+	
+	return mydatas;
+}
+catch(error){
+
+console.log(error)
+}
+
+}
+
+myapi().then((res)=>{
+console.log(res);
+
+for (var i in res){
+
+	//document.write(`${res[i].name} <br>`);
+	
+	document.write(`${res.Countries[i].Country} <br>`);
+}
+});
+
+
+
+</script>
+
+</body>
+</html>
+
+

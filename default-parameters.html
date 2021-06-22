@@ -1,0 +1,44 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Default parameters in ES6 in JavaScript</h1>
+
+<h3>Default function parameters allow name parameters
+to be intiliazed with default values if no value or undefined is passed
+</h3>
+
+
+
+
+
+<script>
+
+//es5
+
+function mul(a,b){
+
+	b=(typeof b !== 'undefined')? b:1;
+	console.log(a*b);
+
+}
+
+mul(4);
+
+//es6 
+
+
+const mult = (a,b=4)=>{
+
+console.log(a*b);
+
+}
+mult(5);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Call Method in JavaScript</h1>
+
+<h1>the call() method is predefined js method.
+
+</h1>
+
+<h1>with call(), an object can use a method belonging to another object</h1>
+
+
+
+<script>
+
+const myyoutube = {
+
+		name : "arif",
+		content : "prog",
+		
+		feature : function(rating,support){
+				console.log(`very friendly way of teching ${this.name}. i will give u ${rating} star. plz ${support}`)
+		}
+
+}
+
+//myyoutube.feature(5,"subscribe");
+
+
+const myyoutube1 ={
+
+		name: "haifa",
+		content: "gaming"
+}
+
+myyoutube.feature.call(myyoutube1,6,"subscribe");
+
+</script>
+
+
+
+</body>
+</html>

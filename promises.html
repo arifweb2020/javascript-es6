@@ -1,0 +1,111 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Promises are used to handle asyncronus operation in js.
+they are easy to manage when dealing with multiple asyncronus
+opeartion where callback hell leading to unmanagable code.</h1>
+
+<h1>A promises is an object that keep track about whether a  certain events
+has happened already or not.
+
+promise elimnetae callback hell
+
+</h1>
+
+<h1>Determine what happens after the events has happened</h1>
+
+<h1>promises 3 stages</h1>
+<p>Pending</p>
+<p>resolve -> fullfiled</p>
+<p>reject</p>
+
+
+<h1>Constructor syntax
+
+var PromiseObject = new Promise(exceutor);
+
+
+we can use promise two way;
+
+1> promise constructor
+2>Promise as an object
+
+</h1>
+
+<script>
+// API REQUIREMENT
+/*
+1> after 2s roll no
+2> after 2s name ,age
+3> after 2s gender*/
+
+
+// promis ka new object create karne k liye new keywords use karna padta hai
+
+
+// promise constructor way and we hav to use one function executor .in executor fun we hv to pass to argument
+
+// mypro has two method then and catch . we use then for resolev and to show output
+
+
+const mypro = new Promise((resolve,reject)=>{
+
+setTimeout(()=>{
+			console.log(`API getting roll no`);
+				let roll_no = [1,2,3,4,5];
+				resolve(roll_no);
+				//reject (`error api`);
+				},2000);
+
+});
+
+const studentsData = (indexdata)=>{
+
+		return new Promise((resolve,reject)=>{
+			
+			setTimeout((indexdata)=>{
+			
+				let data = {
+					name: "arif",
+					age :27
+				
+				}
+				resolve(`My roll num is ${indexdata} . my name is ${data.name} and age is ${data.age}`)
+			
+			},2000,indexdata);
+		
+		});
+		
+		
+
+}
+
+// it returns the data
+
+mypro.then ((rollno)=>{
+
+	console.log(rollno);
+	
+	return  studentsData(rollno[1]);
+	
+	/*studentsData(rollno[1]).then((sname)=>{
+	console.log(sname);
+	});*/
+	
+})
+
+.catch((error)=>{
+	console.log(error);
+}).then((sname)=>{
+	console.log(sname);
+	});
+
+</script>
+
+</body>
+</html>

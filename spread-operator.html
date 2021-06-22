@@ -1,0 +1,63 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Spread Operator in ES6 in JavaScript : it takes an aarray value and spread in to multiple arguments</h1>
+
+<h3>it is mostly used in varaibale array where there 
+is more than one values are expected.
+
+it allow us the privlige to obtain the alist of parameters form an array
+</h3>
+
+
+
+
+
+<script>
+
+//es6
+
+
+function sum(a,b,c){
+console.log(a+b+c);
+}
+
+var arrVal =[1,4,89];
+console.log(arrVal);
+sum(...arrVal);
+
+
+// replace conct
+
+let ar1 =[1,2,3];
+let ar2 =[4,5,6];
+
+ar1 = [...ar1,...ar2]
+
+console.log(ar1);
+
+// replace copy es5
+
+let ac = [1,2,3];
+let ac1 =ac;
+ac1.push(4,5);
+console.log(ac1);
+console.log(ac);
+
+// replace copy es6
+
+let ad = [1,2,3];
+let ad1 =[...ad,4,5];
+
+console.log(ad1);
+console.log(ad);
+
+
+</script>
+</body>
+</html>

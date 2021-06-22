@@ -1,0 +1,73 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Fetch API in JavaScript using ASYNC AWAIT</h1>
+
+
+
+
+</h2>
+
+<h3 id="covid"></h3>
+
+<script>
+
+/*
+fetch('https://api.covid19api.com/summary').then((apidata)=>{
+	console.log(apidata);
+	return apidata.json();
+
+}).then ((actualdata)=>{
+	console.log(actualdata);
+	
+	//console.log(actualdata.Countries[76].Country);
+	
+	//const mydata = actualdata.Countries[76].Country;
+	const mydata = actualdata.Countries[76];
+	
+	//document.getElementById('covid').innerHTML= mydata;
+	document.getElementById('covid').innerHTML= ` ${mydata.Country} and total caese are ${mydata.NewConfirmed}  `;
+
+}).catch ((error)=>{
+
+	console.log(`there is some error ${error}`);
+})
+
+
+*/
+
+
+async function getCovidData(){
+
+	try {
+	const jsonData = await fetch('https://api.covid19api.com/summary');
+	console.log(jsonData);
+	
+	const mydata = await  jsonData.json();
+	console.log(mydata.Countries[76].Country);
+	
+	const finaldata = mydata.Countries[76];
+	console.log(`${finaldata.Country}`)
+	
+	}catch (error){
+		console.log(`Error is found ${error}`)
+	}
+    
+	
+
+}
+
+getCovidData();
+
+// 
+
+
+</script>
+
+</body>
+</html>

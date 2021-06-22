@@ -1,0 +1,57 @@
+<html>
+<head>
+<style>
+
+</style>
+</head>
+
+<body>
+<h1>Practice</h1>
+<script>
+
+function arif(){
+
+
+	return new Promise ((resolve,reject)=>{
+	
+		document.write(`data is fetching plz wait...`);
+		
+		
+		setTimeout(()=>{
+		
+			fetch('https://jsonplaceholder.typicode.com/users').then((apidata)=>{
+			
+				return apidata.json();
+			}).then((data)=>{
+			
+			resolve (data);
+			
+			}).catch((err)=>{
+			
+			reject(err);
+			
+			});
+		
+		
+		},3000)
+	
+	
+	})
+
+}
+
+arif().then((ress)=>{
+
+
+for (let i in ress){
+document.write(`name: ${ress[i].name} <br>`);
+}
+
+}).catch ((wrng)=>{
+
+document.write(`some thing went wrong ${wrng}`);
+});
+
+</script>
+</body>
+</html>

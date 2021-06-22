@@ -1,0 +1,58 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Callback Hell in JavaScript | Asynchronous JavaScript with Callbacks </h1>
+
+<script>
+
+// API REQUIREMENT
+/*
+1> after 2s roll no
+2> after 2s name ,age
+3> after 2s gender*/
+
+
+const rollNo = () =>{
+
+		setTimeout(()=>{
+			console.log(`API getting roll no`);
+				let roll_no = [1,2,3,4,5];
+				console.log(roll_no);
+				
+				setTimeout((rollno)=>{
+				
+				const studentsData = {
+					name :'arif',
+					age:28
+				
+				}
+				console.log(`my roll num is ${rollno} .student name is ${studentsData.name} and age is ${studentsData.age}`);
+				
+				setTimeout((studname)=>{
+				
+				studentsData.gender="male";
+				
+				console.log(`my roll num is ${rollno} .student name is ${studentsData.name} and age is ${studentsData.age}. and 
+				
+				students is ${studentsData.gender}`);
+				
+				
+				},2000,studentsData.name);
+				
+				
+				
+				},2000,roll_no[1]);
+				
+		},2000);
+
+}
+rollNo();
+
+</script>
+</body>
+</html>

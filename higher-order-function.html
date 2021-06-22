@@ -1,0 +1,76 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+<h1>Higher Order Function in JavaScript</h1>
+<h1>Higher Order Function are function
+that take other functions as a argument 
+or return functions as their result.
+
+</h1>
+
+
+
+
+<script>
+
+const interView = (name)=>{
+
+	if(name === "arif"){
+	
+		return function(topic){
+		
+			console.log(`hii ${name}. what is ${topic}. explain it`);
+		
+		}
+	
+	}
+	
+	if(name === "hussain"){
+	
+		return function(topic){
+		
+			console.log(`hii ${name}. what is ${topic}. explain it`);
+		
+		}
+	
+	}
+	
+	if(name === "haifa"){
+	
+		return function(topic){
+		
+			console.log(`hii ${name}. what is ${topic}. explain it`);
+		
+		}
+	
+	}
+	else
+	{
+		return function(){
+				console.log("welcome 2 interview");
+		}
+	}
+
+
+
+}
+
+//interView("arif")("UI");
+//interView("hussain")("Backend");
+//interView("haifa")("DS");
+
+const cand1 = interView("arif");
+
+cand1("UI");
+cand1("Ux");
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Covid19 Tracker App</h1>
+  <p>Check the cases through out the world</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+	
+		<form id="arifForm">
+		<div class="form-group">
+		<input type="text" id="cntry" class="form-control" placeholder="Enter Country Name" required>
+		</div>
+		<div class="form-group">
+		<button type="submit" class="btn btn-md-primary" id="frmsubmit">Search</button>
+		</div>
+		</form>
+		
+		<br>
+		
+		<h3 id="cnf"></h3>
+		<h3 id="rec"></h3>
+		<h3 id="death"></h3>
+      
+    </div>
+    
+  </div>
+</div>
+
+<script>
+
+	const myform = document.getElementById("arifForm");
+	
+	myform.addEventListener('submit', function(event){
+	
+	event.preventDefault();
+	
+	var mycountry = document.getElementById("cntry").value;
+	
+	var covidurl = "https://api.covid19api.com/total/dayone/country/"+mycountry
+	
+	covid19(covidurl);
+	
+	
+	
+	});
+	
+	async function covid19(covidurl){
+	
+		const apidata = await fetch(covidurl);
+		console.log(apidata);
+		
+		const mydata = await apidata.json();
+		
+		console.log(mydata);
+		
+		let length = mydata.length;
+		
+		let index = length - 1;
+		
+		
+		let confirmed = document.getElementById("cnf");
+		let recover = document.getElementById("rec");
+		let deaths = document.getElementById("death");
+		
+		
+		confirmed.innerHTML="";
+		recover.innerHTML="";
+		deaths.innerHTML="";
+		
+		confirmed.append("Total Confirmed caes :" + mydata[index].Confirmed);
+		recover.append(`Total Confirmed caes : ${mydata[index].Recovered}`);
+		deaths.append(`Total Confirmed caes : ${mydata[index].Deaths}`);
+		
+		myform.reset();
+	}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>javascript Es6 </h1>
+
+
+
+<script>
+/*
+class arif {
+
+	constructor(name,age){
+		this.myname = name;
+		this.myage=age;
+	
+	console.log(`hello arif`);
+	}
+	
+	static haifa(){
+	console.log(`bye arif`);
+	
+	}
+	
+	message(){
+	
+	 console.log(`hello ${this.myname} and yr age is ${this.myage}`);
+	return `hello ${this.myname} and yr age is ${this.myage}`;
+	}
+
+}
+
+
+class haifas extends arif{
+
+		constructor(name,age,interest){
+		super(name,age);
+		
+		this.myint = interest;
+		
+		console.log(`2nd constructor calling`);
+		}
+		
+		play(){
+		console.log(`${super.message()} i luv ${this.myint}`);
+		return `${super.message()} i luv ${this.myint}`
+		}
+
+}
+
+
+class arim extends haifas{
+
+	constructor(name,age,interest,lng){
+		
+		super(name,age,interest);
+		
+		this.mylng=lng;
+	}
+
+	pglng(){
+	
+	console.log(`${super.play()} and my fav prog language is ${this.mylng}`);
+	
+	}
+
+}
+
+class hussain extends arif {
+
+	constructor(name,age,gen){
+	
+		super(name,age);
+		
+		this.mygen=gen;
+		}
+		
+		gender(){
+		
+		console.log(`${super.message()} and gender is ${this.mygen}`);
+		
+		}
+	
+	}
+
+
+
+let a = new haifas("arif",28,"football");
+
+let b = new arif("arifs",26);
+
+let c = new arim("arif",28,"cricket","JAVA");
+
+let d = new hussain("arim",26,"male");
+
+a.play();
+b.message();
+
+c.pglng();
+
+d.gender();
+
+arif.haifa();
+
+*/
+
+ // this for method special
+
+
+class employee{
+
+	constructor(name,salary){
+	
+	this.myname = name;
+	this.sal=salary;
+	
+	
+	}
+	
+	emp(){
+	console.log(`employee salary is : ${this.myname} and salary is ${this.sal}`);
+	}
+		
+}
+
+
+class manager extends employee{
+
+
+
+		emp(){
+		
+		let at = 3000;
+		let pt = 4000;
+		let total = this.sal + at + pt;
+		
+		console.log(`manager salary is : ${this.myname} and salary is ${total}`)
+		
+		}
+
+}
+
+let a = new employee("hasim",10000);
+
+let b = new manager("arif",20000);
+
+a.emp();
+b.emp();
+
+
+</script>
+
+</body>
+</html>

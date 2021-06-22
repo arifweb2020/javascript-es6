@@ -1,0 +1,40 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Event Loop in JavaScript </h1>
+
+<h2>Event Loop - message quqeu rakha hua kab muhe exceution stack me rakhana hai</h2>
+
+
+<h3>Global execution context (GCE)- this is default execution context in
+which js code starts it execution when file is load in the browser.
+
+</h3>
+
+<h3>execution context - an execution context is is an abstarct concept of 
+environment where is js code is evaluted and excuted.
+
+</h3>
+
+<script>
+const func3= ()=>{
+setTimeout(()=>{
+console.log(`func3 is starting`);
+},3000);
+}
+
+const func4 =() =>{
+
+console.log(`func4 is starting`);
+func3();
+console.log(`fun4 is ending`);
+}
+func4()
+</script>
+</body>
+</html>

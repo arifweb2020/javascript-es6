@@ -1,0 +1,82 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Bind Method in JavaScript</h1>
+
+<h1>by this method we can bind an object to a common
+function so the function gives different result when we needed.
+
+</h1>
+
+
+
+<script>
+
+const myyoutube = {
+
+		name : "arif",
+		content : "prog",
+		
+		feature : function(){
+				console.log(`very friendly way of teching ${this.name}. i will give u star. `)
+		}
+
+}
+
+
+let yutubefn = myyoutube.feature;
+yutubefn();
+let yutubefn1 = myyoutube.feature.bind(myyoutube);
+
+yutubefn1();
+
+
+
+// complex onemptied
+
+const college = {
+
+		name : "Rv",
+		address : "btm",
+		
+		
+}
+
+const college1 = {
+
+		name : "PES",
+		address : "jp",
+		
+		
+}
+
+const college2 = {
+
+		name : "CMS",
+		address : "marathalli",
+		
+		
+}
+
+
+function goodfor(rating){
+				console.log(`very friendly way of teching ${this.name}. i will give u college ${this.address}. college rating is ${rating} `)
+		}
+		
+let colgfn = goodfor.bind(college);	
+colgfn(5);
+
+let colgfn1 = goodfor.bind(college1);	
+colgfn1(4);
+
+</script>
+
+
+
+</body>
+</html>

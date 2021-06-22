@@ -1,0 +1,219 @@
+<html>
+
+<head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>Promises in javascript Es6 </h1>
+
+
+
+<script>
+
+/*
+1> one way to call var let complete = true;
+
+let complete = true;
+
+const prom = new Promise ((resolve,reject)=>{
+
+		if (complete){
+		
+			resolve(`i am successfull`);
+		
+		}
+		else{
+		
+		 reject(`failed`);
+		
+		}
+
+
+});
+
+console.log(prom); */
+
+/* 
+2> 2nd way how to call then() and catch function
+
+function prom(complete){
+
+
+return new Promise ((resolve,reject)=>{
+
+		if (complete){
+		
+			resolve(`i am successfull`);
+		
+		}
+		else{
+		
+		 reject(`failed`);
+		
+		}
+
+
+});
+
+}
+
+	let fullfilment = (result) =>{
+	
+		console.log(result);
+	}
+	
+	let notfullfill = (error) =>{
+	
+		console.log(error);
+	}
+	
+	
+	prom(true).then(fullfilment);
+	prom(true).catch(notfullfill);
+
+console.log(prom(true));
+
+*/
+
+
+/*
+
+3> 3rd step how to call setTimeout
+
+function prom(complete){
+
+
+return new Promise ((resolve,reject)=>{
+
+	console.log(`fetching data plz wait`);
+	
+	
+		setTimeout(()=>{
+		
+		if (complete){
+		
+			resolve(`i am successfull`);
+		
+		}
+		else{
+		
+		 reject(`failed`);
+		
+		}
+		
+		},2000);
+
+		
+
+
+});
+
+}
+
+
+	prom(true).then((result) =>{
+	
+		console.log(result);
+	}).catch((error) =>{
+	
+		console.log(error);
+	});
+	
+	
+*/
+
+
+/* 4th step two arguments in prom(5,2) function
+
+function prom(a,b){
+
+
+return new Promise ((resolve,reject)=>{
+
+	console.log(`fetching data plz wait`);
+	
+		let c = a/b;
+	
+		setTimeout(()=>{
+		
+		if (a,b){
+		
+			resolve(`yr vale is ${c}`);
+		
+		}
+		else{
+		
+		 reject(`failed to claculate`);
+		
+		}
+		
+		},2000);
+
+		
+
+
+});
+
+}
+
+
+	prom(5,2).then((result) =>{
+	
+		console.log(result);
+	}).catch((error) =>{
+	
+		console.log(error);
+	});
+	
+*/
+
+
+// 5th step ajax call using jquery - live api
+
+
+function prom(){
+
+
+return new Promise ((resolve,reject)=>{
+
+	console.log(`fetching data plz wait`);
+	
+	
+	
+		setTimeout(()=>{
+		
+		
+		$.get ("https://jsonplaceholder.typicode.com/posts",function(data){
+		
+			//console.log(data);
+			resolve(data);
+		}).fail(err =>{
+		
+			reject(`failed to load json`);
+		});
+		
+		},2000);
+
+		
+
+
+});
+
+}
+
+
+	prom().then((result) =>{
+	
+		console.log(result);
+	}).catch((error) =>{
+	
+		console.log(error);
+	});
+	
+
+</script>
+
+</body>
+</html>

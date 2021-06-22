@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Covid19- API Tracker | By Arif Hussain</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <style>
+  .loader{
+	z-index:9999;
+	background:#fff;
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+}
+.loader-gif{
+	 background-position: center center;
+    background-repeat: no-repeat;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+
+.hide-loader{
+display:none;
+}
+
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+ <img src="https://i.pinimg.com/originals/be/ce/0c/bece0c797cb134aefb2cb836578c9249.gif" class="loader-gif">
+</div>
+	
+<br><br>
+<div class="container">
+  <h2 style="color:#673ab7"><center>Covid19 App Tracker</center></h2><br>
+          
+   <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>NewConfirmed</th>
+        <th>TotalConfirmed</th>
+		<th>TotalDeaths</th>
+        <th>TotalRecovered</th>
+      </tr>
+    </thead>
+    <tbody id="tdata">
+     
+      
+    </tbody>
+  </table>
+</div>
+<script>
+
+
+function formatNumber(num) {
+  return String(num).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+}
+
+fetch('https://api.covid19api.com/summary').then((data)=>{
+console.log(data);
+return data.json();
+}).then((mydata)=>{
+
+//console.log(mydata);
+
+
+const adata = mydata.Countries;
+
+//console.log(adata);
+
+
+setTimeout(()=>{
+
+loaderFn();
+
+if(adata.length > 0){
+
+	let temp = "";
+	
+	adata.forEach((finaldata)=>{
+	
+			temp += "<tr>";
+			temp += "<td>" + formatNumber(finaldata.Country)+ "</td>";
+            temp += "<td>" + formatNumber(finaldata.NewConfirmed) + "</td>";
+            temp += "<td>" + formatNumber(finaldata.TotalConfirmed) + "</td>";
+			temp += "<td>" + formatNumber(finaldata.TotalDeaths) + "</td>";
+			temp += "<td>" + formatNumber(finaldata.TotalRecovered) + "</td>";
+	
+	});
+	
+	document.getElementById('tdata').innerHTML = temp;
+
+
+}
+
+
+},2000);
+
+
+/*for (var x in adata){
+
+	console.log(x);
+	//document.write(`${mydata[x].name} - ${mydata[x].email} - ${mydata[x].email} - ${mydata[x].address.street} <br>`);
+	
+	var a = `${adata[x].Country} - ${adata[x].NewConfirmed} - ${adata[x].TotalConfirmed}   <br>`;
+	document.write(a);
+}*/
+
+}).catch((error)=>{
+console.log(error)
+});
+
+function loaderFn(){
+
+	$('#loader').addClass("hide-loader");
+
+}
+
+</script>
+</body>
+</html>

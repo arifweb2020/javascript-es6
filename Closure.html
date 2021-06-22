@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Closure in JavaScript</h1>
+
+<h1>Closure in action that is inner function can have accesskey
+to the outer function variables as well as
+all the global variables
+
+
+</h1>
+
+
+
+<script>
+
+const outerFn = (a)=>{
+		
+		let b =10;
+		
+		const innerFn = ()=>{
+		
+			let sum = a+b;
+			
+			console.log(`the sum  two nums is ${sum}`);
+			
+		}
+		innerFn();
+
+}
+outerFn(5);
+
+</script>
+
+
+
+</body>
+</html>

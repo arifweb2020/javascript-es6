@@ -1,0 +1,98 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>CLASS , OBJECT , INHERITANCE</h1>
+
+<p> a class is a type function, but instead
+of using the keyword function, we use keyword class
+and properties are asigned inside the constructor
+
+
+</p>
+
+<h2>when u are using class and we u are creating object then constructor method will call
+
+and we hv to keep all the properties inside the Constructor()
+
+</h2>
+
+<script>
+
+//for function syntax
+
+//function Students(){
+
+//}
+
+
+// in class syntax biodata()= is method
+
+class Students{
+
+		constructor(name,age,cls){
+				this.myname = name;
+				this.myage = age;
+				this.mycls = cls;
+				
+		}
+		
+		//biodata() = instance method coz if u Extends Students then Player can access Students biodata() method
+
+	biodata(){
+	return `hi i am calling class method ${this.myname}. my age is ${this.myage} and study in ${this.mycls}`;
+	
+	}
+	
+	/* Player cant access biodata() method
+	static biodata(){
+	console.log(`hi i am calling class method ${this.myname}. my age is ${this.myage} and study in ${this.mycls}`);
+	
+	}
+	*/
+
+}
+
+// player inherit from students
+
+class Player extends Students{
+
+		constructor(name,age,cls,game){
+		super(name,age,cls);
+		this.mygame = game;
+		
+		}
+/*biodata(){
+	console.log(`hi i am calling class method ${this.myname}. my age is ${this.myage} and study in ${this.mycls} my fav game is ${this.mygame} `);
+	
+	}*/
+	
+	player_data(){
+		console.log(`${super.biodata()}. and fav game is ${this.mygame}`)
+	
+	}
+}
+
+/*
+let obj1 =new Students('arif',28,'ECE','Cricket');
+let obj2 =new Students('hussain',27,'EC');
+console.log(obj1);
+obj1.biodata();
+obj2.biodata();*/
+
+let obj1 =new Player('arif',28,'ECE','Cricket');
+let obj2 =new Player('hussain',27,'EC');
+console.log(obj1);
+//obj1.biodata();
+obj1.player_data();
+obj2.biodata();
+
+
+
+</script>
+</body>
+</html>

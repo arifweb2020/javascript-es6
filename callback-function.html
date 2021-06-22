@@ -1,0 +1,53 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+<h1>Everything about Callback Function in Advanced JavaScript  </h1>
+<h1>any function that is passed as an argument is called call back function</h1>
+<h1>a callback is a function that is excuted after another function has finhed excuting </h1>
+
+<script>
+
+const funA = () =>{
+
+
+		setTimeout(function(){
+            console.log("funA is excuted");
+		},3000);
+		
+		
+}
+
+const funB = () =>{
+		console.log("funB is excuted")
+}
+funA();
+funB();
+
+
+
+// 2nd way callback function
+
+
+const pesron1 = (friend, callfrnd)=>{
+		
+		console.log(`i am bsy right now . i am talking to ${friend}.`);
+		callfrnd();
+}
+
+
+const pesron2 = ()=>{
+		
+		console.log(`i call u back`);
+		
+}
+
+pesron1("Arif", pesron2);
+//pesron2();
+
+</script>
+</body>
+</html>

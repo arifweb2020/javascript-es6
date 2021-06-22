@@ -1,0 +1,46 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Rest parameters</h1>
+
+<p>it allow us to represent an indifinte number of arugment as an array</p>
+<h2>... = rest opertaor</h2>
+
+<script>
+
+//es5 
+
+function sum(a,b,c,d,e){
+
+console.log(a+b+c+d+e);
+
+}
+
+sum(1,2,3,4,5);
+
+//es6
+
+function sum1(...inputs){
+
+// for values console.log(...inputs);
+// for array console.log(inputs)
+
+		let total =0;
+		
+		for (let i of inputs){
+			total+=i;
+		}
+console.log(total);
+
+}
+
+sum1(1,2,3,4,50);
+
+</script>
+</body>
+</html>

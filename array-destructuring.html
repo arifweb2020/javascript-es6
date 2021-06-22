@@ -1,0 +1,60 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Array Destructuring in ES6 in JavaScript</h1>
+
+<h3>Array Destructuring syntax make it possible
+to unpack value form arrays , or properties form object, into distinct variabless
+
+</h3>
+
+
+
+<script>
+//es5
+var x =['java','php'];
+
+var x1=x[0];
+var y1=x[1];
+
+console.log("fav prg lng is " + x1);
+
+
+//es6
+
+const y =['java','php','python'];
+
+
+let[first,sec]= y;
+
+/* we can also write
+let first,sec;
+
+[first,sec]= y;
+*/
+
+console.log(`fav lng is ${first}`);
+
+// if u first and last items
+
+
+const y3 =['java','php','python','php'];
+
+
+let[ft,,,lt]= y3;
+
+console.log(`fav lng is ${ft} and least is ${lt}`);
+
+
+
+
+
+
+</script>
+</body>
+</html>

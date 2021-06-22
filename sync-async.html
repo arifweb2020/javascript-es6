@@ -1,0 +1,91 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Synchronous vs Asynchronous Programming in JavaScript </h1>
+
+<h3>Synchronous - A Synchronous request block the client until operation
+completes. i.e browser unresponsive
+</h3>
+
+<h3>Asynchronous (Ajax web - application model) - An asynchronous request does not block the client until operation
+. i.e browser responsive . at that time user can perform another operation also</h3>
+
+
+
+<button type="button" id="btn">CLICK</button><br><br>
+
+<form>
+
+<input type="text" placeholder="enter your name"><br><br>
+<input type="password" placeholder="enter your password"><br><br>
+<input type="submit" value="submit">
+</form>
+
+<script>
+//Synchronous in
+
+const func2= ()=>{
+console.log(`func2 is starting`);
+}
+
+const func1 =() =>{
+
+console.log(`func1 is starting`);
+func2();
+console.log(`func1 is ending`);
+}
+func1()
+
+
+//asynchronous way
+
+const func3= ()=>{
+setTimeout(()=>{
+console.log(`func3 is starting`);
+},3000);
+}
+
+const func4 =() =>{
+
+console.log(`func4 is starting`);
+func3();
+console.log(`fun4 is ending`);
+}
+func4()
+
+/* this is synchronus way
+const wait = ()=>{
+	console.log(`js part is starting`);
+	
+	let start= new Date().getTime();
+	console.log(new Date().getTime()- start);
+	
+	while (new Date().getTime()- start < 5000);
+	
+console.log(`all js part is done`);
+}
+
+*/
+
+// async way
+
+const wait = ()=>{
+	console.log(`js part is starting`);
+	
+	setTimeout(()=>{
+	
+	console.log(`all js part is done`);
+	},5000);
+	
+
+}
+
+btn.addEventListener('click', wait);
+</script>
+</body>
+</html>

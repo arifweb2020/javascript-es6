@@ -1,0 +1,81 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+<h1>JavaScript Functional Programming | First Class Citizen Function in JavaScript </h1>
+<h1>in js we can assign a function as a variable</h1>
+<h1>pass a function as argument </h1>
+<h1>Returning function</h1>
+
+
+
+<script>
+
+// in js we can assign a function to a variable
+
+const arif = ()=>{
+	console.log("in js we can assign a function to a variable");
+}
+
+arif();
+
+
+
+// in object we can pass a function we called method
+
+
+const college = {
+		
+		name : "RV",
+		
+		quali : function(){
+			console.log("college is good");
+		}
+}
+
+college.quali();
+
+// pass a function as a argument
+
+
+	const myname = ()=>{
+			return "Hello";
+			
+	}
+	
+	const greeting = (sayHi , name)=>{
+	console.log(sayHi() + "" + name);
+			
+	}
+greeting(myname , "Arif");
+
+
+// returning function
+
+function a(){
+
+	return function b(){
+	
+		console.log("returning function")
+	
+	}
+
+
+}
+// one way 
+ //a()();
+
+//2nd way
+
+const c = a();
+
+c();
+
+
+
+</script>
+</body>
+</html>

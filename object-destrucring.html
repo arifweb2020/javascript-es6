@@ -1,0 +1,66 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Object Destructuring in ES6 in JavaScript</h1>
+
+<h3>Array Destructuring syntax make it possible
+to unpack value form arrays , or properties form object, into distinct variabless
+
+</h3>
+
+
+
+<script>
+//es6
+
+
+const collegename = {
+
+			clg1:"RV",
+			estb:2009,
+			clg2:"PESIT",
+			
+			students:{
+			
+				name:"arif",
+				age:28,
+				
+				studyin:{
+				
+					lc:"bglr",
+					lc1:"chennai"
+				
+				}
+			
+			}
+
+}
+
+//console.log(`best college is ${collegename.clg1}`);
+
+/*let{clg1,estb,clg2}=collegename;
+
+or
+
+let clg1,estb,clg2
+
+({clg1,estb,clg2}=collegename );
+
+console.log(`best college is ${clg1}`);
+
+or we can do
+
+*/
+
+let{clg1:x,estb:y,clg2:z,students:sname,studyin:loc}=collegename
+
+console.log(`best college is ${x} and fav student is ${sname.name} and study is ${students.studyin.lc1} `);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Tracker Application - DevAT</title>
+    <!-- https://www.youtube.com/watch?v=-T6LZAkp8oo -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<style>
+	*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    min-width: 290px;
+    max-width: 900px;
+    margin:15px 10px;
+    text-align: center;
+    border: 1px solid #777777;
+    border-radius: 5px;
+}
+h1{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+h2{
+    color: darkblue;
+}
+#date{
+    color: teal;
+}
+h3{
+    margin: 10px 0;
+}
+
+form input,
+form button{
+    width: 200px;
+    height: 35px;
+    border: 1px solid #cccc;
+    padding: 0 5px;
+    outline: none;
+}
+
+form button{
+    width: 70px;
+}
+#name-country{
+    color: #555;
+    margin-top: 20px;
+}
+.content{
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.content .box{
+    min-width: 270px;
+    margin: 10px;
+    border: 1px solid #cccc;
+    padding: 15px;
+    letter-spacing: 2px;
+}
+.content .box:hover{
+    background: #eee4;
+}
+.content .box p{
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.confirmed h3,
+.confirmed i{
+    color: crimson;
+}
+
+.recovered h3,
+.recovered i{
+    color: green;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Virus Corona</h1>
+        <h2>( Covid 19 )</h2>
+        <h3 id="date"></h3>
+        <form autocomplete="off">
+            <input type="text" name="srch" id="srch" required
+            list="countries" placeholder="Enter a name of country">
+            <datalist id="countries"></datalist>
+            <button>Search</button>
+        </form>
+        <h2 id="name-country"></h2>
+        <div class="content">
+            <div class="box confirmed">
+                <p>confirmed</p>
+                <h3>0</h3>
+                <i class="fa fa-long-arrow-up">0</i>
+            </div>
+            <div class="box deaths">
+                <p>deaths</p>
+                <h3>0</h3>
+                <i class="fa fa-long-arrow-up">0</i>
+            </div>
+            <div class="box recovered">
+                <p>recovered</p>
+                <h3>0</h3>
+                <i class="fa fa-long-arrow-up">0</i>
+            </div>
+        </div>
+        <div class="chart"></div>
+    </div>
+    
+
+    <script >
+	
+	const countries = document.querySelector('datalist');
+const search = document.querySelector('#srch');
+const date = document.querySelector('#date');
+const nameCountry = document.querySelector('#name-country');
+const confirmed = document.querySelector('.confirmed');
+const deaths = document.querySelector('.deaths');
+const recovered = document.querySelector('.recovered');
+const chart = document.querySelector('.chart');
+
+let dataChart = [];
+
+const API_URL = "https://api.covid19api.com/summary";
+
+async function covid(country){
+
+    countries.innerHTML = `<option value="World">World</option>`;
+    resetValue(confirmed);
+    resetValue(deaths);
+    resetValue(recovered);
+    const res = await fetch(API_URL);
+    const data = await res.json();
+    
+    if(res.status === 4 || res.status === 200){
+        date.textContent = new Date(data.Date).toDateString() ;
+        
+        if(country === '' || country === 'World'){
+            const {TotalConfirmed,TotalDeaths,TotalRecovered, NewConfirmed, NewDeaths, NewRecovered} = data.Global;
+            total(TotalConfirmed,TotalDeaths,TotalRecovered);
+            newUpdate(NewConfirmed,NewDeaths,NewRecovered);
+
+            nameCountry.textContent = 'The World';
+            dataChart = [TotalConfirmed,TotalDeaths,TotalRecovered];
+        }
+        
+
+        data.Countries.forEach(item =>{
+            const option = document.createElement('option');
+            option.value = `${item.Country}`;
+            option.textContent = `${item.Country}`;
+            countries.appendChild(option);
+
+            if(country === item.Country){
+                total(item.TotalConfirmed,item.TotalDeaths,item.TotalRecovered);
+
+                newUpdate(item.NewConfirmed,item.NewDeaths,item.NewRecovered);
+
+                nameCountry.textContent = country;
+                dataChart = [item.TotalConfirmed,item.TotalDeaths,item.TotalRecovered];
+            }
+        });
+
+        draw(dataChart);
+    }else{
+        chart.innerHTML = `<h2>Loading..........</h2>`;
+    }
+};
+
+const speed = 100;
+function counting(target, element){
+    const inc = target / speed ;
+    const count = +element.textContent;
+
+    if(count < target){
+        element.textContent = Math.ceil(count + inc);
+        setTimeout(()=>{
+            counting(target, element)
+        },1)
+    }else{
+        element.textContent = target;
+    }
+};
+
+function resetValue(element){
+    element.children[1].textContent = 0;
+    element.children[2].textContent = 0;
+};
+
+function total(Confirmed,Deaths,Recovered){
+    // Confirmed
+    counting(Confirmed, confirmed.children[1]);
+    // Deaths
+    counting(Deaths, deaths.children[1]);
+    // Recovered
+    counting(Recovered, recovered.children[1]);
+};
+
+function newUpdate(Confirmed,Deaths,Recovered){
+    // New Confirmed
+    counting(Confirmed, confirmed.children[2]);
+    //New Deaths
+    counting(Deaths, deaths.children[2]);
+    //New Recovered
+    counting(Recovered, recovered.children[2]);
+};
+
+function draw(data){
+    chart.innerHTML = '';
+    const ctx = document.createElement('canvas');
+    chart.appendChild(ctx);
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Total Confirmed', 'Total Deaths', 'Total Recovered'],
+            datasets: [{
+                label: nameCountry.textContent,
+                data: data,
+                backgroundColor: ['crimson','black','green']
+            }]
+        },
+        options: {}
+    });
+};
+
+covid(search.value);
+
+const btnSeacrh = document.querySelector('button');
+btnSeacrh.addEventListener('click', (e)=>{
+    e.preventDefault();
+    covid(search.value);
+    search.value = '';
+});
+	</script>
+</body>
+</html>

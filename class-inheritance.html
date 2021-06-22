@@ -1,0 +1,75 @@
+<html>
+
+<head>
+
+</head>
+<body>
+
+<h1>class Inheritance</h1>
+
+
+
+
+<script>
+
+class employee {
+
+		constructor(name,age,salary){
+		
+			this.empname = name;
+			this.empage = age;
+			this.empsalary = salary;
+			console.log('i am parent constructor ');
+		}
+		
+		info(){
+			document.write(` <h4>Employe salary</h4>
+		
+                     name:${this.empname}<br>
+					age: ${this.empage}<br>
+					salary:${this.empsalary}`);
+		}
+
+}
+
+
+class manager extends employee{
+/*constructor(sname){
+super();
+			console.log('i am manager constructor ' + sname);
+		}*/
+
+/*
+		info(){
+		super.info();
+			console.log(`Manger name ${this.empname}`);
+		}
+		
+		*/
+		
+		
+		
+		info(){
+		
+		let ta =1000;
+		let pa = 3000;
+		let totalsal = this.empsalary + ta + pa;
+			document.write(` <h4>Manager Salary</h4>
+			
+                     name:${this.empname}<br>
+					age: ${this.empage}<br>
+					salary:${totalsal}`);
+		}
+}
+
+//let a = new employee();
+
+let a = new manager("arif",25,19000); // it auotmaitcally cosntrcutor ()
+let b = new employee("haifa",22,9000);
+a.info();
+b.info();
+
+</script>
+
+</body>
+</html>

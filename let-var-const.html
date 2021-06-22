@@ -1,0 +1,114 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>javascript Es6 Var, let, cosnt</h1>
+
+<h3>varaible declared with "var" is function scope</h3>
+
+<h3>varaible declared with "let & const" is block scope</h3>
+
+
+<script>
+//es5
+var  name ="arif";
+
+console.log(name);
+
+//es6
+
+let  name1 ="arif";
+
+console.log(name1);
+
+const  name2 ="arif";
+
+console.log(name2);
+
+
+//es5
+
+var  name3 ="arif";
+
+name3="hussain";
+
+console.log(name3);
+
+
+//es6
+let  name4 ="arif";
+
+name4="hussain";
+
+console.log(name4);
+
+
+const  name5 ="arif"; // but its wrong coz u hv only one value
+
+//name5="hussain";
+
+console.log(name5);
+
+//es6
+
+function mod(arifjs){
+
+if(arifjs){
+
+let x = "arif";
+const y = "hussain";
+
+console.log("my first name is " + x + "and last name is " + y );
+
+}
+// console.log("my first name is " + x + "and last name is " + y ); = showing error coz function scope
+}
+
+mod(true);
+
+//es5
+function mod(arifjs){
+
+if(arifjs){
+
+var x1 = "arif";
+var y1 = "hussain";
+
+console.log("my first name is " + x1 + "and last name is " + y1 );
+
+}
+console.log("my first name is " + x1 + "and last name is " + y1 ); 
+}
+
+mod(true);
+
+// es5 global scope;
+var win ="India";
+
+if(true){
+var win ="Aus";
+console.log(win);
+
+}
+
+console.log(win);
+
+
+// es6 global scope;
+var wins ="India";
+
+if(true){
+let wins ="Aus";
+console.log(wins);
+
+}
+
+console.log(wins);
+
+</script>
+</body>
+</html>

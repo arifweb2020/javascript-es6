@@ -1,0 +1,141 @@
+<html>
+
+<head>
+
+</head>
+<body>
+
+<h1>OOP</h1>
+
+<h2>3 types of methods</h2>
+
+<h3>Constructor - constructor(){
+		console.log('arif');
+}
+<br>
+agar mai kisi v classs ka object bnaunga tou wo automatic constructor() call ho jate hai<br>
+
+it is used for class k andar koi property define karna chate hai tab hum log constructor() use karte hai
+</h3>
+<h3>Prototype - message(){
+	
+	console.log(`hii arif`);
+	}
+	
+	sorry(){
+	console.log(`not well`);
+	
+	}<br>
+	
+	jab tak hum log issey call nahi karenge wo call nahi hota hai
+	
+	</h3>
+<h3>static - static name(){
+console.log(`good`);
+}<br>
+ we can call without making any object
+
+</h3>
+
+
+<script>
+
+// step 1
+
+
+class hello{
+
+
+	// message() -> this is method 
+	message(){
+	
+	console.log(`hii arif`);
+	}
+	
+	sorry(){
+	console.log(`not well`);
+	
+	}
+
+}
+
+let a = new hello(); // now it becomes an object
+
+a.message();
+a.sorry();
+
+
+//  constructor fn
+
+class Students{
+	
+	constructor(){
+		console.log("arif");
+	}
+		
+}
+
+let stud = new Students();
+
+
+// constructor fn and prototype
+
+class arif{
+	
+	constructor(){
+		let name;
+	}
+	
+	hello(){
+	console.log("how r u " + this.name);
+	}
+		
+}
+
+let haifa = new arif();
+
+haifa.name = "imran";
+
+haifa.hello();
+
+
+// simple way to pass argument in constructor fn
+
+class ari{
+	
+	constructor(sname,age){
+		this.myname = sname;
+		this.myage=age;
+	}
+	
+	hell(){
+	console.log(` my name is ${this.myname} and age is ${this.myage}`);
+	}
+	
+	//static method
+	
+	static mystatic(){
+	
+		console.log(`i m static`);
+	
+	}
+		
+}
+
+let haif = new ari("motto",25);
+
+// we can another object 
+
+let saif = new ari("immu",26);
+
+haif.hell();
+saif.hell()
+
+// how call static method
+
+ari.mystatic();
+
+</script>
+
+</body>
+</html>

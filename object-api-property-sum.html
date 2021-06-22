@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+  .error {
+  display: block;
+  background-color: crimson;
+  color: #fff;
+  padding: 5px;
+}
+</style>
+</head>
+<body>
+<p id="demo"></p>
+
+            <form id="covidSearch" class="form-inline">
+            <h3>Search by country</h3>
+            <div class="search__container">
+              <input type="text" id="search" class="form-control" placeholder="Search Country" />
+              <button type="submit" class="btn btn-md btn-success">Search</button>
+            </div>
+            
+          </form>
+		  
+		  <div class="search__result">
+
+          </div>
+<script>
+
+
+var person =[ {fname:70, lname:30, age:25},
+{fname:90, lname:90, age:50}];
+
+
+   let wordlCases = 0;
+  let wordlDeaths = 0;
+  let wordlRecovered = 0;
+  let worldData = "";
+  for (const data of person) {
+    worldData = {
+      cases: (wordlCases += data.fname),
+      deaths: (wordlDeaths += data.lname),
+      recovered: (wordlRecovered += data.age),
+    };
+  }
+  
+  console.log(worldData);
+  
+  /*
+  var person =[ {fname:70, lname:30, age:25},
+{fname:90, lname:90, age:50}];
+
+
+   let wordlCases = 0;
+
+
+  for (const data of person) {
+   
+       wordlCases += data.fname
+      
+  
+  }
+  
+  console.log(wordlCases);
+  document.getElementById("demo").innerHTML = wordlCases;
+  */
+</script>
+
+
+
+
+
+</body>
+</html>

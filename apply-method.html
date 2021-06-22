@@ -1,0 +1,48 @@
+<html>
+
+<head>
+
+
+</head>
+<body>
+
+<h1>Apply Method in JavaScript</h1>
+
+<h1>the apply() method is similar to call()  method.
+
+</h1>
+
+<h1>the call() method takes argument seperately</h1>
+<h1>the apply() method takes argument as an array</h1>
+
+
+<script>
+
+const myyoutube = {
+
+		name : "arif",
+		content : "prog",
+		
+		feature : function(rating,support){
+				console.log(`very friendly way of teching ${this.name}. i will give u ${rating} star. plz ${support}`)
+		}
+
+}
+
+//myyoutube.feature(5,"subscribe");
+
+
+const myyoutube1 ={
+
+		name: "haifa",
+		content: "gaming"
+}
+
+myyoutube.feature.apply(myyoutube1,[6,"subscribe"]);
+
+</script>
+
+
+
+</body>
+</html>
