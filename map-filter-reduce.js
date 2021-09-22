@@ -106,7 +106,7 @@ console.log(myarrayy);
 
 
 let b = [2,3,4,5,5,4];
-var myarrays = a.filter(function(value, index)
+var myarrays = b.filter(function(value, index)
 { 
 return b.indexOf(value) !== index 
 }
@@ -117,7 +117,7 @@ console.log(myarrays);
 
 
 
-var actualArr = ['Apple', 'Apple', 'Banana', 'Mango', 'Strawberry', 'Banana'];
+var actualArr = ['Apple', 'Apple', 'Apple' , 'Banana', 'Mango', 'Strawberry', 'Banana'];
 
 console.log('Actual Array: ' + actualArr);
 
@@ -129,6 +129,40 @@ var filteredArr = actualArr.filter(function(item, index) {
 console.log('Filtered Array: ' + filteredArr);
 
 
+const mmm = [1,2,2,2,3,4,4,5,4,0,0,0,9]
+
+let aaaa = mmm.filter((value,index)=>{
+	
+	return mmm.indexOf(value) == index
+	
+
+})
+
+console.log(aaaa)
+
+
+var nums = [1,2,34,54,55,34,32,11,19,17,54,66,13];
+var evens = [];
+var odds = [];
+
+var evenNumbers = function(nums) {
+    for (var i = 0; i < nums.length; i++) {
+
+        if ((nums[i] % 2) != 1) {
+            evens.push(nums[i]);
+                console.log(evens);
+        }
+        else {
+            odds.push(nums[i]);
+                console.log(odds);
+        }
+    }
+
+};
+
+evenNumbers(nums);
+alert(evens);
+alert(odds);
 
 
 </script>
